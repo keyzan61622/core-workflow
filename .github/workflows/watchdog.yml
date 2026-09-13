@@ -1,18 +1,28 @@
 name: pterodactyl-watchdog
+
 on:
   schedule:
     - cron: '*/5 * * * *'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install axios
-      - run: node watchdog.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Jalankan watchdog
+        run: node watchdog.js
         env:
           PANEL_API_KEY: ${{ secrets.PANEL_API_KEY }}
+          PANEL_URL: ${{ secrets.PANEL_URL }}
+          SERVER_IDS: ${{ secrets.SERVER_IDS }}
