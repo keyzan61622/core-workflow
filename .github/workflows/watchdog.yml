@@ -8,6 +8,7 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    environment: PANEL_API_KEY
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
