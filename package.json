@@ -1,0 +1,12 @@
+{
+  "name": "pterodactyl-watchdog",
+  "version": "1.0.0",
+  "description": "Auto-start server Pterodactyl kalau statusnya offline (misal setelah maintenance provider)",
+  "main": "watchdog.js",
+  "scripts": {
+    "start": "node watchdog.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.0"
+  }
+}
